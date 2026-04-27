@@ -17,6 +17,9 @@ Note: `Milight iBox2` product has been renamed to `Milight WiFi Box`. It is uncl
 products are fully compatible with each other. Please let me know by creating an issue or 
 pull-request.
 
+Voice assistant scenarios for Alice and Sber Salut are described in
+[VOICE_ASSISTANTS.md](VOICE_ASSISTANTS.md).
+
 
 ## Installation
 
