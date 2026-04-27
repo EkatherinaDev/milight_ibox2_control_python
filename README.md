@@ -32,6 +32,117 @@ $ python3 setup.py install
 ```
 
 
+## Windows GUI: локальный запуск и сборка EXE
+
+Этот проект содержит простой графический интерфейс для Windows: окно `MiLight Toggle`
+с одной кнопкой `Включить / выключить`. Приложение ищет MiLight iBox2 в локальной сети
+и переключает зону `1`.
+
+### Что нужно перед запуском
+
+* Windows 10/11.
+* MiLight iBox2 должен быть подключен к той же Wi-Fi/LAN сети, что и компьютер.
+* На компьютере должен быть установлен Python 3.9 или новее.
+* Для сборки `.exe` нужен пакет `pyinstaller`.
+
+Проверить Python можно в PowerShell:
+
+```powershell
+py -3 --version
+```
+
+Если команда не найдена, установите Python с https://www.python.org/downloads/windows/
+и включите опцию `Add python.exe to PATH` во время установки.
+
+### Скачать проект
+
+```powershell
+git clone https://github.com/EkatherinaDev/milight_ibox2_control_python.git
+cd milight_ibox2_control_python
+```
+
+Если Git не установлен, можно скачать проект как ZIP с GitHub, распаковать архив и открыть
+PowerShell в распакованной папке.
+
+### Запустить GUI из исходников
+
+Создайте виртуальное окружение:
+
+```powershell
+py -3 -m venv .venv
+.\.venv\Scripts\activate
+```
+
+Запустите графический интерфейс:
+
+```powershell
+python milight_gui.py
+```
+
+Откроется окно с кнопкой `Включить / выключить`. При нажатии приложение:
+
+* ищет iBox2 в локальной сети по UDP-порту `5987`;
+* подключается к первому найденному устройству;
+* если последняя команда была `включить`, отправляет `выключить`;
+* если последняя команда была `выключить` или состояние неизвестно, отправляет `включить`.
+
+### Собрать EXE
+
+Активируйте виртуальное окружение, если оно еще не активно:
+
+```powershell
+.\.venv\Scripts\activate
+```
+
+Установите PyInstaller:
+
+```powershell
+python -m pip install --upgrade pip pyinstaller
+```
+
+Соберите приложение:
+
+```powershell
+python -m PyInstaller --noconfirm --clean --onefile --windowed --name MiLightToggle milight_gui.py
+```
+
+Готовый файл появится здесь:
+
+```text
+dist\MiLightToggle.exe
+```
+
+Запустить его можно двойным кликом или из PowerShell:
+
+```powershell
+.\dist\MiLightToggle.exe
+```
+
+### Как пользоваться
+
+1. Убедитесь, что компьютер и MiLight iBox2 находятся в одной сети.
+2. Запустите `MiLightToggle.exe`.
+3. Нажмите `Включить / выключить`.
+4. Если устройство найдено, приложение отправит команду для зоны `1`.
+
+Состояние лампы хранится локально в файле:
+
+```text
+%APPDATA%\MiLightToggle\state.json
+```
+
+iBox2 не сообщает реальное текущее состояние лампы, поэтому приложение запоминает только
+последнюю команду, отправленную с этого компьютера. Если включать или выключать свет из
+другого приложения или пульта, локальное состояние может отличаться от реального.
+
+Если приложение пишет, что iBox2 не найден:
+
+* проверьте, что iBox2 включен;
+* проверьте, что компьютер подключен к той же сети;
+* разрешите приложению доступ к сети в Windows Firewall;
+* убедитесь, что UDP-порт `5987` не блокируется роутером или антивирусом.
+
+
 ## Usage
 
 Full example code: [examples/ibox2_client_example.py](https://github.com/Erriez/milight_ibox2_control_python/blob/master/examples/ibox2_client_example.py)
