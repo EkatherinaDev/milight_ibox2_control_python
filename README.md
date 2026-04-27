@@ -19,6 +19,8 @@ pull-request.
 
 Voice assistant scenarios for Alice and Sber Salut are described in
 [VOICE_ASSISTANTS.md](VOICE_ASSISTANTS.md).
+Ready-to-use Sber Salut on/off scenarios are described in
+[SALUT_SCENARIOS.md](SALUT_SCENARIOS.md).
 
 
 ## Installation
