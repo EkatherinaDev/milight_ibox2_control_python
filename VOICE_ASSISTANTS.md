@@ -14,6 +14,7 @@
 
 После подключения MiLight как устройства умного дома используйте сценарии ниже.
 
+Туториал по подключению MiLight к Home Assistant: [HOME_ASSISTANT.md](HOME_ASSISTANT.md).
 Короткий готовый документ только для Салюта: [SALUT_SCENARIOS.md](SALUT_SCENARIOS.md).
 
 ## Рекомендуемые имена

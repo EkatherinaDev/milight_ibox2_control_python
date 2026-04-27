@@ -21,6 +21,8 @@ Voice assistant scenarios for Alice and Sber Salut are described in
 [VOICE_ASSISTANTS.md](VOICE_ASSISTANTS.md).
 Ready-to-use Sber Salut on/off scenarios are described in
 [SALUT_SCENARIOS.md](SALUT_SCENARIOS.md).
+Home Assistant setup is described in
+[HOME_ASSISTANT.md](HOME_ASSISTANT.md).
 
 
 ## Installation
